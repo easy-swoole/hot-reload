@@ -52,8 +52,8 @@ class FileScanner extends AbstractMonitor
             $dirtyList[$inode] = $mtime;
         }
 
-        // 与上次检测时发生了iNode差异则必定要更新
-        if (array_diff(array_keys($dirtyList), array_keys($this->lastFileList))) {
+        // 当数组中出现脏值则发生了文件变更
+        if (array_diff_assoc($dirtyList, $this->lastFileList)) {
             $this->lastFileList = $dirtyList;
             if ($this->isReady) {
                 $this->sendReloadSignal();
