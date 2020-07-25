@@ -57,9 +57,12 @@ abstract class AbstractMonitor
         foreach ($this->hotReloadOptions->getMonitorFolder() as $folder) {
             if (is_dir($folder)) {
                 $files = File::scanDirectory($folder);
-                foreach ($files['files'] as $inde => $file) {
+                foreach ($files['files'] as $index => $file) {
                     if (in_array(pathinfo($file, PATHINFO_EXTENSION), $this->hotReloadOptions->getIgnoreSuffix())) {
-                        unset($files['files'][$inde]);
+                        unset($files['files'][$index]);
+                    }
+                    if (in_array(pathinfo($file, PATHINFO_BASENAME), $this->hotReloadOptions->getIgnoreFile())) {
+                        unset($files['files'][$index]);
                     }
                 }
                 $fileList = array_merge($files['files'], $files['dirs']);
