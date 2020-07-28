@@ -13,6 +13,7 @@ class HotReloadOptions extends SplBean
 {
     protected $monitorFolder = [];
     protected $ignoreSuffix = [];
+    protected $ignoreFile = [];
     protected $disableInotify = false;
     protected $reloadCallback = null;
 
@@ -33,6 +34,26 @@ class HotReloadOptions extends SplBean
     public function setMonitorFolder($monitorFolder)
     {
         $this->monitorFolder = $monitorFolder;
+        return $this;
+    }
+
+    /**
+     * IgnoreFile Getter
+     * @return array
+     */
+    public function getIgnoreFile()
+    {
+        return $this->ignoreFile;
+    }
+
+    /**
+     * IgnoreFile Setter
+     * @param array $ignoreFile
+     * @return HotReloadOptions
+     */
+    public function setIgnoreFile($ignoreFile)
+    {
+        $this->ignoreFile = $ignoreFile;
         return $this;
     }
 
