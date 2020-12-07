@@ -65,7 +65,7 @@ abstract class AbstractMonitor
                         unset($files['files'][$index]);
                     }
                 }
-                $fileList = array_merge($files['files'], $files['dirs']);
+                $fileList = array_merge($fileList, $files['files'], $files['dirs']);
             }
         }
         return $fileList;
